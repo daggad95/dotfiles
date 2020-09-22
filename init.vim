@@ -12,6 +12,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'morhetz/gruvbox'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
