@@ -1,5 +1,4 @@
 call plug#begin('~/.local/share/nvim/plugged')
-
 Plug 'davidhalter/jedi-vim'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -7,14 +6,22 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'numirias/semshi'
 Plug 'Vimjas/vim-python-pep8-indent'
-" Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'morhetz/gruvbox'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'tpope/vim-surround'
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
+
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 0
+
+" set to 1, the nvim will auto close current preview window when change
+" from markdown buffer to another buffer
+" default: 1
+let g:mkdp_auto_close = 1
 
 set number
 syntax on
@@ -25,6 +32,9 @@ set shiftwidth=4    " number of spaces to use for autoindent
 
 autocmd BufNewFile,BufRead *.ptest set syntax=json
 
+" Use Prettier for formatting
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 "Run Black on save
 let g:black_linelength = 120
 autocmd BufWritePre *.py execute ':Black'
@@ -33,15 +43,22 @@ colorscheme gruvbox
 
 " open new split panes to right and below
 set splitbelow
+set splitright
+
 " turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
+
 " start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
 " open terminal on ctrl+n
 function! OpenTerminal()
 	:! alacritty --working-directory '%:p:h' &
 endfunction
 nnoremap <C-t> :call OpenTerminal()<CR>
+
+" Reload conf
+nnoremap confr :source $MYVIMRC<CR>
 
 " Open nerdtree with ctrl-n
 map <C-n> :NERDTreeToggle<CR>
