@@ -46,12 +46,12 @@ map <C-f> :Rg<CR>
 " Search for files using fzf
 map <C-p> :Files<CR>
 
-" Open and close terminal
-nnoremap <c-t> :sp term://zsh<CR>i
-tnoremap <c-t> <C-\><C-n> :q!<CR>
-
 source ~/dotfiles/nerdtree.vim
 source ~/dotfiles/coc.vim
 source ~/dotfiles/markdown.vim
 source ~/dotfiles/sneak.vim
 source ~/dotfiles/black.vim
+source ~/dotfiles/terminal.vim
+
+
+
