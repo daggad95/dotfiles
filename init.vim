@@ -50,8 +50,8 @@ map <C-p> :Files<CR>
 nnoremap <c-t> :sp term://zsh<CR>i
 tnoremap <c-t> <C-\><C-n> :q!<CR>
 
-source nerdtree.vim
-source coc.vim
-source markdown.vim
-source sneak.vim
-source black.vim
+source ~/dotfiles/nerdtree.vim
+source ~/dotfiles/coc.vim
+source ~/dotfiles/markdown.vim
+source ~/dotfiles/sneak.vim
+source ~/dotfiles/black.vim
